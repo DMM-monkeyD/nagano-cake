@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   get "about" =>"public/homes#about"
   get "customers/my_page" => "public/customers#show"
 
-  namespace :public do
+  scope module: :public do
     resources :customers, only: [:show, :edit, :update]
     resources :orders, only: [:index, :show, :new, :create]
     post 'orders/log' => 'orders#log'
