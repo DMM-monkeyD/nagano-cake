@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
   get "about" =>"public/homes#about"
   get "customers/my_page" => "public/customers#show"
-
   scope module: :public do
     # root to: "public/homes#top"
     resources :customers, only: [:show, :edit, :update] do
