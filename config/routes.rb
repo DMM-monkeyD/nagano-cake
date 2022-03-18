@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   namespace :public do
-    get 'shipping_address/index'
-    get 'shipping_address/edit'
+    resources :shipping_addresses
   end
   namespace :public do
     get 'orders/index'
@@ -14,8 +13,7 @@ Rails.application.routes.draw do
     get 'cart_items/index'
   end
   namespace :public do
-    get 'items/index'
-    get 'items/show'
+    resources :items
   end
   namespace :admin do
     get 'orders/index'
@@ -26,15 +24,13 @@ Rails.application.routes.draw do
     get 'customers/show'
     get 'customers/edit'
   end
+  
   namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
+    resources :genres, only: [:index, :create, :edit, :update]
   end
+  
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
+    resources :items
   end
   
   # 顧客用
