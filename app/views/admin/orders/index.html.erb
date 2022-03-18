@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-10 offset-1">
       <table class="table table-hover table-inverse admin_customers_table">
-        <thead class="thead-light">
+        <thead class="thead-dark">
           <tr>
             <th>購入日時</th>
             <th>購入者</th>
@@ -18,10 +18,9 @@
             <% @orders.each do |order| %>
             <tr>
               <td><u><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M"), admin_order_path(order.id),class: "text-dark" %></u></td>
-              <td>
-                <%= order.customer.last_name %><%= order.customer.first_name %>
+              <td>購入者のフルネーム
               </td>
-              <td><%= order.order_items.sum(:quantity) %></td>
+              <td>注文数の足し算</td>
               <td><%= order.status_i18n %></td>
             </tr>
           <% end %>
