@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+  
 # devise
   # 管理者用(URL /admin/sign_in ...)
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -35,15 +28,36 @@ Rails.application.routes.draw do
   get "customers/my_page" => "public/customers#show"
 
   scope module: :public do
-    resources :customers, only: [:show, :edit, :update]
-    resources :orders, only: [:index, :show, :new, :create]
-    post 'orders/log' => 'orders#log'
-    get 'orders/complete' => 'orders#complete'
+    # root to: "public/homes#top"
+    resources :customers, only: [:show, :edit, :update] do
+      collection do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
+    end
+    resources :orders, only: [:index, :show, :new, :create] do
+      collection do
+        post 'log'
+        get 'complete'
+      end
+    end
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :cart_items, only: [:index, :create, :update, :destroy] do
+      collection do
+        get 'destroy_all'
+      end
+    end
     resources :shipping_address, only: [:index, :create, :edit, :update, :destroy]
   end
   
+  # namespace :public do
+  #   get 'customers/show'
+  #   get 'customers/edit'
+  # end
+  # namespace :public do
+  #   get 'homes/top'
+  #   get 'homes/about'
+  # end
   
   # # namespace :admin do
   #   # get 'orders/index'
