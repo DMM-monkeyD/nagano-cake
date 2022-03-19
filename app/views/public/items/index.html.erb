@@ -1,2 +1,37 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+ <div class="container my-5">
+  <div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title shadow-none p-3 mb-5 bg-light rounded">ジャンル一覧</h3>
+          <p class="card-text">
+            <% @genres.each do |genre| %>
+            <%= genre.name %>
+            <br>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class = "col-lg-8">
+      <h3>
+        商品一覧
+        <small><small>(全<%= @items.count %>件)</small></small>
+      </h3>
+      <% @items.each do |item| %>
+        <%= image_tag item.image, size: "300x250" %>
+        <br>
+        商品名
+        <%= link_to item_path(item.id) do %>  
+        <%= item.name %>
+        <% end %>
+        <br>
+        税込価格
+        ¥<%= item.add_tax_price.to_s(:delimited) %>
+        <br>
+      <% end %>
+      <%= paginate @items %>
+   </div>
+ </div>
+</div>
