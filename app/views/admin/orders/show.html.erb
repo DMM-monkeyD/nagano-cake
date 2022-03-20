@@ -49,33 +49,38 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>買った商品一覧のeach分
+        <tbody>
+          <% @order_items.each do |order_item| %>
           <tr>
-            <td>買った商品</td>
-            <td>単価（税抜）</td>
-            <td>数量</td>
-            <td>小計</td>
-            <td></td>
+            <td><%= order_item.item.name %></td>
+            <td>¥ <%= order_item.tax_price %></td>
+            <td><%= order_item.quantity %></td>
+            <td>¥ <%= (order_item.tax_price)*order_item.quantity %> </td>
+            <td><%= form_with model: order_item, url: admin_order_item_path(order_item.id), local:true do |f| %>
+              <%= f.select :making_status, OrderItem.making_statuses.keys.map {|k| [I18n.t("enums.order_item.making_status.#{k}"), k]} %>
+              <%= f.submit '更新', class: 'btn btn-success ml-5' %>
+              <% end %></td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
-  
-  
+
+
     <div class="col-3 mt-auto offset-1">
       <table class="table table-borderless">
         <tbody>
           <tr>
             <td>商品合計</td>
-            <td>円</td>
+            <td><%= @order.total_price %> 円</td>
           </tr>
           <tr>
             <td>送料</td>
-            <td>円</td>
+            <td><%= @order.postage %> 円</td>
           </tr>
           <tr>
             <td><strong>請求金額合計</strong></td>
-            <td><strong>円</strong></td>
+            <td><strong><%= @order.total_price + @order.postage %> 円</strong></td>
           </tr>
         </tbody>
       </table>
