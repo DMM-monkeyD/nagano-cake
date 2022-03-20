@@ -40,6 +40,7 @@ Rails.application.routes.draw do
         get 'complete'
       end
     end
+    post 'orders/back'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
