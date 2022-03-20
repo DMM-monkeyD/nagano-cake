@@ -39,7 +39,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :phone_number
       t.string :address
       t.string :post_code
-      t.boolean :is_deleted
+      t.boolean :is_deleted, default: false
 
       t.timestamps null: false
     end
