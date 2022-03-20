@@ -28,6 +28,40 @@
             </p>
           </div>
         </div>
+        
+        <div class="mt-2">
+          <div class="col-sm-4 ml-3">
+            <%= f.radio_button :address_option, 1 %>
+            <%= f.label :order_address, "登録済住所から選択" %>
+          </div>
+          <div class="col-sm-4 ml-5">
+            <%= f.collection_select :customer_id, current_customer.shipping_addresses.all, :id, :address, prompt: "住所を選択してください" %>
+          </div>
+        </div>
+        
+        <div class="mt-2">
+          <div class="col-sm-4 ml-3 mt-2">
+            <%= f.radio_button :address_option, 2 %>
+            <%= f.label :order_address, "新しいお届け先" %>
+          </div>
+          <div class="field col-sm-12 ml-4">
+            <%= f.label :post_code, "郵便番号(ハイフンなし)", class: "col-lg-3" %>
+            <%= f.text_field :post_code %>
+          </div>
+          <div class="field col-sm-12  ml-4">
+            <%= f.label :address,"住所", class: "col-lg-3" %>
+            <%= f.text_field :address, size:"60x60"%>
+          </div>
+          <div class="field col-sm-12  ml-4">
+            <%= f.label :name,"宛名", class: "col-lg-3" %>
+            <%= f.text_field :name, size:"30x30" %>
+          </div>
+        </div>
+        
+        <div class="field col-sm-12 text-center mt-2">
+          <%= f.submit "確認画面へ進む",class: "btn btn-primary" %>
+        </div>
+
       <% end %>
     </div>
   </div>

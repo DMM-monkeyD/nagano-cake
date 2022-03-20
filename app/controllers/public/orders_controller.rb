@@ -11,9 +11,20 @@ class Public::OrdersController < ApplicationController
     @customer = Customer.find(current_customer.id)
   end
 
+  def create
+    @order = Order.new(order_params)
+    @order.save
+  end
+
   def log
   end
 
   def complete
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:name, :post_code, :address, :postage, :total_price, :payment_method)
   end
 end
