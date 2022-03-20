@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
-        get 'destroy_all'
+        delete 'destroy_all'
       end
     end
     resources :shipping_address, only: [:index, :create, :edit, :update, :destroy]

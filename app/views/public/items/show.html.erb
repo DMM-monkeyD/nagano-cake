@@ -5,17 +5,17 @@
     </div>
     <div class = "col-3">
       <p>
-      商品名<%= @item.name %>    
+      商品名<%= @item.name %>
       </p>
       <p>
-      商品説明<%= @item.introduction %>    
+      商品説明<%= @item.introduction %>
       </p>
       <p>
       税込価格<%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円
       </p>
       <%= form_with model:@cart_item, url: cart_items_path, method: :post, local:true do |f| %>
         <%= f.hidden_field :item_id, value: @item.id %>
-        <%= f.select :amount, *[1..20] %>
+        <%= f.select :quantity, *[1..20] %>
         <%= f.submit 'カートに入れる' %>
       <% end %>
     </div>
