@@ -1,4 +1,4 @@
-<div class  = "container">
+<div class  = "container mt-5">
   <h1>商品詳細</h1>
   <div class = "row">
       <div class="col-4">
@@ -12,7 +12,7 @@
        <br>(税抜価格)
        </p>
        <p>
-        販売ステータス
+        販売ステータス　
         <% if @item.is_active == true %>
         販売中
         <% elsif @item.is_active == false %>
