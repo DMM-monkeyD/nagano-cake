@@ -41,35 +41,29 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
       render :new
     end
-
-
   end
-
 
   def log
     @cart_items = current_customer.cart_items.all
     @postage = 800
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @total_price = @total + @postage
+    @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
-      @order = Order.new
       @order.post_code = current_customer.post_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == "1"
-      @order = Order.new
       @delivery = ShippingAddress.find(params[:order][:shipping_address_id])
       @order.post_code = @delivery.post_code
       @order.address = @delivery.address
       @order.name = @delivery.name
     elsif params[:order][:select_address] == "2"
-      @order = Order.new(order_params)
     else
       flash[:notice] = "配送先を選択してください"
       @order = Order.new(order_params)
       render :new
     end
-
   end
 
   def back
