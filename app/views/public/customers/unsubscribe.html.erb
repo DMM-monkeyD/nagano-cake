@@ -7,4 +7,4 @@
 </div>
 
 <%= link_to "退会しない", customers_my_page_path %>
-<%= link_to "退会する", withdraw_customers_path %>
+<%= link_to "退会する", withdraw_customers_path, method: :patch, data: { confilm: "本当に退会しますか？"}  %>

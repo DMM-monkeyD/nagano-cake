@@ -30,7 +30,9 @@ Rails.application.routes.draw do
     # root to: "public/homes#top"
     resources :customers, only: [:show, :edit, :update] do
       collection do
+        # 退会確認画面
         get 'unsubscribe'
+        # 論理削除用のルーティング
         patch 'withdraw'
       end
     end
