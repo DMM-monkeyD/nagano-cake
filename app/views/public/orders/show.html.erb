@@ -54,7 +54,7 @@
           </tr>
           <tr>
             <td class="table-active font-weight-bold">ご請求額</td>
-            <td><%= (@order.total_price + @order.postage).to_s(:delimited) %></td>
+            <td><%= @order.total_price.to_s(:delimited) %></td>
           </tr>
         </tbody>
       </table>
