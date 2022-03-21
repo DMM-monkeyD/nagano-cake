@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h3 class="p-3"><span class="header">注文履歴詳細</span></h3>
+    <h3 class="p-2 bg-dark text-light"><span class="header">注文履歴詳細</span></h3>
   </div>
 
   <div class="row">
@@ -46,7 +46,7 @@
         <tbody>
           <tr>
             <td class="table-active">商品合計</td>
-            <td><%= @order.total_price.to_s(:delimited, delimiter: ',') %></td>
+            <td><%= @order.total_price.to_s(:delimited) %></td>
           </tr>
           <tr>
             <td class="table-active">配送料</td>
@@ -54,7 +54,7 @@
           </tr>
           <tr>
             <td class="table-active font-weight-bold">ご請求額</td>
-            <td><%= (@order.total_price + @order.postage).to_s(:delimited, delimiter: ',') %></td>
+            <td><%= (@order.total_price + @order.postage).to_s(:delimited) %></td>
           </tr>
         </tbody>
       </table>
@@ -78,10 +78,10 @@
           </tr>
           <% @order.order_items.each do |order_items|%>
             <tr>
-              <td><%= order_items.item.name %></td>
-              <td><%= order_items.tax_price.to_s(:delimited, delimiter: ',') %></td>
-              <td><%= order_items.quantity %></td>
-              <td><%= (order_items.tax_price*order_items.quantity).to_s(:delimited, delimiter: ',') %></td>
+              <td class=""><%= order_items.item.name %></td>
+              <td class="text-right"><%= order_items.tax_price.to_s(:delimited) %>円</td>
+              <td class="text-right"><%= order_items.quantity %>個</td>
+              <td class="text-right"><%= (order_items.tax_price*order_items.quantity).to_s(:delimited) %>円</td>
             </tr>
           <% end %>
         </tbody>
