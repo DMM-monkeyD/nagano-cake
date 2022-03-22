@@ -38,8 +38,8 @@
     </div>
     <div class="row">
         <div class="col-10 p-3 form-inline" >
-            <div class="mr-3"><%= f.submit "編集内容を保存" %></div>
-            <div class="mr-3"><%= link_to "退会する", unsubscribe_customers_path %></div>
+            <div class="mr-3"><%= f.submit "編集内容を保存", class: 'btn btn-ex ml-5' %></div>
+            <div class="mr-3"><%= link_to "退会する", unsubscribe_customers_path, class: 'btn btn-ex ml-5' %></div>
         </div>
     </div>
     <% end %>

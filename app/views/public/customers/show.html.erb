@@ -10,7 +10,7 @@
             <div class = "mr-3"><h4>登録情報</h4></div>
             <!--<h4>登録情報</h4>-->
             <div class = "mr-3">
-                <%= link_to "編集する", edit_customer_path(current_customer) %>
+                <%= link_to "編集する", edit_customer_path(current_customer), class: 'btn btn-ex ml-5' %>
             </div>
         </div>
         <div class="col-10">
@@ -42,13 +42,13 @@
         <div class="col-10 form-inline">
             <div class = "mr-3"><h4>配送先</h4></div>
             <div class = "mr-3">
-                <%= link_to "一覧を見る", shipping_address_index_path %>
+                <%= link_to "一覧を見る", shipping_address_index_path, class: 'btn btn-ex ml-5' %>
             </div>
         </div>
         <div class="col-10 form-inline">
             <div class = "mr-3"><h4>注文履歴</h4></div>
             <div class = "mr-3">
-                <%= link_to "一覧を見る", orders_path %>
+                <%= link_to "一覧を見る", orders_path, class: 'btn btn-ex ml-5' %>
             </div>
         </div>
     </div>
