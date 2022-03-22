@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <a class="navbar-brand mr-5" href="/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <p class="navbar-nav offset-1">
+      <% if customer_signed_in? %>
+        ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！
+      <% end %>
+    </p>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <% if admin_signed_in? %>
+          <li><%= link_to "商品一覧", admin_items_path %></li>
+          <li><%= link_to "会員一覧", admin_customers_path %></li>
+          <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
+          <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+        <% elsif customer_signed_in? %>
+          <li><%= link_to "マイページ", customers_my_page_path %></li>
+          <li><%= link_to "商品一覧", items_path %></li>
+          <li><%= link_to "カート", cart_items_path %></li>
+          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "商品一覧", items_path %></li>
+          <li><%= link_to "新規登録", new_customer_registration_path %></li>
+          <li><%= link_to "ログイン", new_customer_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+
+
+<!-- Header-->
+<div class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h3 class="display-5 fw-bolder">ようこそ、ながのCAKEへ！</h3>
+            <p class="lead fw-normal text-white-50 mb-0">
+                このサイトは、ケーキ販売のECサイトになります。
+                <br>会員でない方も商品の閲覧はできますが、
+                <br>購入には会員登録が必要になります。
+            </p>
+        </div>
+    </div>
+</div>        
+<!-- Section-->
+<section class="py-5">
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <div class="col mb-5">
+        <h3>新着商品</h3>
+        <div class="d-flex" >
+        <div class="card h-80">
+          <% @items.each do |item| %>
+            <!-- Product image-->
+            <img class="card-img" >
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.image, width:"185px", height:"185px"%>
+              <% end %>
+            </img>
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder"><%= item.name %></h5>
+                <!-- Product price-->
+                <p>¥<%= item.price.to_s(:delimited) %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class ="row m-5">
+      <div>
+        <%=link_to about_path do %>
+          全ての商品を見る＞
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
