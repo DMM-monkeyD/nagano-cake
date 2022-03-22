@@ -1,21 +1,51 @@
-<h1>Public::Homes#top</h1>
-
-<div>
-    <h5>
-        ようこそ、ながのcakeへ！<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。
-    </h5>
-</div>
-<div>
-    <h2>新着商品</h2>
-    <% @items.each do |item| %>
-        <%= link_to item_path(item) do %>
-            <%= image_tag item.image, size: "200x130"%>
+<!-- Header-->
+<div class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h3 class="display-5 fw-bolder">ようこそ、ながのCAKEへ！</h3>
+            <p class="lead fw-normal text-white-50 mb-0">
+                このサイトは、ケーキ販売のECサイトになります。
+                <br>会員でない方も商品の閲覧はできますが、
+                <br>購入には会員登録が必要になります。
+            </p>
+        </div>
+    </div>
+</div>        
+<!-- Section-->
+<section class="py-5">
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <div class="col mb-5">
+        <h3>新着商品</h3>
+        <div class="card-group" >
+        <div class="card h-80">
+          <% @items.each do |item| %>
+            <!-- Product image-->
+            <img class="card-img-top" >
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.image, size: "200x130"%>
+              <% end %>
+            </img>
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder"><%= item.name %></h5>
+                <!-- Product price-->
+                <p>¥<%= item.price.to_s(:delimited) %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class ="row m-5">
+      <div>
+        <%=link_to about_path do %>
+          全ての商品を見る＞
         <% end %>
-        <p><%= item.name %></p>
-        <p>¥<%= item.price.to_s(:delimited) %></p>
-    <% end %>
-</div>
-<p><%= link_to "すべての商品を見る", items_path %></p>
+      </div>
+    </div>
+  </div>
+</section>
