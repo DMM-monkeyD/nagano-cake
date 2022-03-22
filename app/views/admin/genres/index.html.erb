@@ -1,10 +1,11 @@
 <div class="container">
-  <div class="row">
-    <h3 class="p-3"><span class="header">ジャンル一覧・追加</span></h3>
+  <h3 class="p-3"><span class="header">ジャンル一覧・追加</span></h3>
+    </div>
   </div>
   <div class="row mt-5"> 
     <div class="col-5 offset-1">
       <%= form_with model:@genre, url: '/admin/genres', method: :post, local:true do |f| %>
+        <%= render "admin/shared/error_messages", resource: @genre %>
         <%= f.label :ジャンル名 %>
         <%= f.text_field :name %>
         <%= f.submit '新規登録' %>
