@@ -28,10 +28,43 @@
 	color: #fff;
 }
 
+
 .grid {
   display: grid;
   gap: 26px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-top: 6%;
   margin-bottom: 50px;
+}
+
+.link {
+ color: darkgray;
+}
+.link:hover {
+ color: lightgray;
+}
+
+.card-item {
+ display: inline;
+}
+
+* {
+  box-sizing: border-box;
+}
+ 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  display: flex;
+  flex-direction: column;
+}
+ 
+footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 30px 0;
 }
