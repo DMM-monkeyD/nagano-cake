@@ -17,6 +17,7 @@
             </div>
         </div>
     </div>
+
 </header>
 <!-- item preview section-->
 <section class="py-5">
@@ -30,27 +31,20 @@
                     <% end %>
                 </div>
             </div>
-            <div class="col-9">
-                <div class="text-center">
-                    <h2 class="fw-bolder">新着商品</h2>
-                </div>
-                <div class="card-item" >
-                    <div class="card w-30 h-60 shadow border-0">
-                        <% @items.each do |item| %>
-                            <img class="card-img" >
-                                <%= link_to item_path(item) do %>
-                                    <%= image_tag item.image, width:"185px", height:"185px"%>
-                                <% end %>
-                            </img>
-                            <div class="card-body p-4">
-                                <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                    <h5 class="card-title mb-3"><%= item.name %></h5>
-                                </a>
-                                <p class="card-text mb-0">¥<%= item.price.to_s(:delimited) %></p>
-                            </div>
-                        <% end %>
-                    </div>
-                </div>
+            <div class = "col-lg-8">
+              <h3>新着商品</h3>
+              <div class ="wrapper grid" >
+                <% @items.each do |item| %>
+                  <div class="card" style="width: 16rem;">
+                    <%= link_to item_path(item) do %>
+                      <div class="card-img-top"><%= image_tag item.image, width:"254px", height:"185px" %></div>
+                    <% end %>
+                    <div class="card-title"><h5 class="fw-bolder"><%= item.name %></h5></div>
+                    <p>¥<%= item.price.to_s(:delimited) %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
                 <div class="text-right">
                     <%=link_to items_path do %>
                         全ての商品を見る
@@ -66,3 +60,4 @@
 <script src="js/scripts.js"></script>
 </body>
 </html>
+
