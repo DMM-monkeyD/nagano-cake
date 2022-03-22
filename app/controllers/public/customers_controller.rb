@@ -22,6 +22,9 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
   
+  def index
+    redirect_to new_customer_registration_path
+  end
   
   private
   

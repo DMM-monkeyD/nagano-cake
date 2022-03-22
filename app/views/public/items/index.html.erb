@@ -1,7 +1,7 @@
  <div class="container mt-5">
   <div class="row">
     <div class="col-3">
-      <div class="card-header">ジャンル一覧</div>
+      <div class="card-header text-white bg-dark ">ジャンル一覧</div>
       <div class="card-body">
         <% @genres.each do |genre| %>
           <p class="card-text"><%= genre.name %></p>
@@ -14,7 +14,7 @@
         <% @items.each do |item| %>
         　<div class="card" style="width: 14rem;">
         　   <%= link_to item_path(item.id) do %>
-              <%= image_tag item.image, size:'160x120' %>
+              <%= image_tag item.image, width:'100%x100%'%>
               <div class="card-body">
                 <small>
                 <p>商品名<br><strong><%= item.name %></strong></p>
@@ -26,7 +26,9 @@
           </div>
         <% end %>
       </div>
-      <%= paginate @items %>
+        <div class="row justify-content-center">
+        <%= paginate @items %>
+        </div
     </div>
   </div>
 </div>
