@@ -23,7 +23,7 @@
         <% @cart_items.each do |cart_item| %>
           <tr>
             <td class="align-middle">
-              <%= image_tag cart_item.item.image, format:'jpg', size:'70x50' %><span class="ml-4"><%= cart_item.item.name %></span>
+              <%= image_tag cart_item.item.image, format:'jpg', size:'50x50' %><span class="ml-4"><%= cart_item.item.name %></span>
             </td>
             <td class="align-middle">¥ <%= cart_item.item.add_tax_price.to_s(:delimited, delimiter: ',') %></td>
             <td>
