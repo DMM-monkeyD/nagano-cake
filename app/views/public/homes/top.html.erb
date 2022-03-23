@@ -21,7 +21,7 @@
 </header>
 <!-- item preview section-->
 <section class="py-5">
-    <div class="container px-5 my-5">
+    <div class="container ml-5 px-5 my-5">
         <div class="row gx-5">
             <div class="col-3">
                 <div class="card-header text-white bg-dark ">ジャンル一覧</div>
@@ -38,9 +38,11 @@
                   <div class="card" style="width: 16rem;">
                     <%= link_to item_path(item) do %>
                       <div class="card-img-top"><%= image_tag item.image, width:"254px", height:"185px" %></div>
+                      <div class="card-title lead"><h5 class="font-monospace text-center"><%= item.name %></h5></div>
                     <% end %>
-                    <div class="card-title"><h5 class="fw-bolder"><%= item.name %></h5></div>
-                    <p>¥<%= item.price.to_s(:delimited) %></p>
+                    <div class="card-text"><p class="lead text-center text-light bg-dark">商品説明</p></div>
+                    <div class="card-text"><%= item.introduction %></div>
+                    <p class="text-right lead">¥<%= item.price.to_s(:delimited) %></p>
                   </div>
                 <% end %>
               </div>

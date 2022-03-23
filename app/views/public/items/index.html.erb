@@ -10,22 +10,23 @@
     </div>
 
     <div class = "col-lg-8">
-      <h3>商品一覧<span>(全<%= @items.count %>件)</span></h3>
+      <h3>商品一覧<span>(全<%= @items_count %>件)</span></h3>
       <div class ="wrapper grid" >
         <% @items.each do |item| %>
           <div class="card" style="width: 16rem;">
             <%= link_to item_path(item) do %>
               <div class="card-img-top"><%= image_tag item.image, width:"254px", height:"185px" %></div>
-              <div class="card-title"><h5 class="fw-bolder"><%= item.name %></h5></div>
-              <div class="card-text"><p>商品説明<br><%= item.introduction %></p></div>
-              <p class="text-right">¥<%= item.price.to_s(:delimited) %></p>
+              <div class="card-title lead"><h5 class="font-monospace text-center"><%= item.name %></h5></div>
             <% end %>
+              <div class="card-text"><p class="lead text-center text-light bg-dark">商品説明</p></div>
+              <div class="card-text"><%= item.introduction %></div>
+              <p class="text-right lead">¥<%= item.price.to_s(:delimited) %></p>
           </div>
         <% end %>
       </div>
-    </div>
-        <div class="row justify-content-center">
+      <div class="row justify-content-center">
         <%= paginate @items %>
-        </div>
+      </div>
+    </div>
   </div>
 </div>
