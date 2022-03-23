@@ -1,20 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container">
-    <a class="navbar-brand mr-5" href="/"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <p class="navbar-nav offset-1">
-      <% if customer_signed_in? %>
+<% if customer_signed_in? %>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand mr-5" href="/"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <p class="navbar-nav offset-1">
         ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！
-      <% end %>
-    </p>
-  </div>
-</nav>
+      </p>
+    </div>
+  </nav>
+<% end %>
   
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container px-5">
-      <a class="navbar-brand" href="/">LOGO</a>
+      <a class="navbar-brand p-3" href="/">
+        <img  src="/assets/logo1.png" alt="..." width="120px" height="60px" />
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,5 +41,9 @@
           <% end %>
         </ul>
       </div>
+      <form method="get" action="/" class="search_container">
+        <input type="text" size="25" placeholder="search">
+        <input type="submit" value="&#xf002">
+      </form>
     </div>
   </nav>
