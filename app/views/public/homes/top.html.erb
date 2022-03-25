@@ -1,7 +1,7 @@
-<header class="bg-dark py-5">
+<header class="bg-dark pt-3">
     <div class="container px-5">
         <div class="row gx-5 align-items-center justify-content-center">
-            <div class="col-lg-8 col-xl-7 col-xxl-6">
+            <div class="col-lg-7 col-xl-6 col-xxl-6">
                 <div class="my-5 text-center text-xl-start">
                     <h1 class="display-5 fw-bolder text-white mb-2">ようこそ、ながのCAKEへ！</h1>
                     <p class="lead fw-normal text-white-50 mb-4">
@@ -11,9 +11,9 @@
                     </p>
                 </div>
             </div>
-            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+            <div class="col-xl-6 col-xxl-7 d-none d-xl-block text-center">
                 <!--<%#= image_tag "top1.jpg", width: 500, height: 300 %>-->
-                <img class="img-fluid rounded-3 my-5" src="/assets/top1.jpg" alt="..." />
+                <img class="img-fluid rounded-3 my-3 ml-2" src="/assets/top7-7.png" alt="..." width="500px" height="800px"  />
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
 </header>
 <!-- item preview section-->
 <section class="py-5">
-    <div class="container px-5 my-5">
+    <div class="container ml-5 px-5 my-5">
         <div class="row gx-5">
             <div class="col-3">
                 <div class="card-header text-white bg-dark ">ジャンル一覧</div>
@@ -38,9 +38,11 @@
                   <div class="card" style="width: 16rem;">
                     <%= link_to item_path(item) do %>
                       <div class="card-img-top"><%= image_tag item.image, width:"254px", height:"185px" %></div>
+                      <div class="card-title lead"><h5 class="font-monospace text-center"><%= item.name %></h5></div>
                     <% end %>
-                    <div class="card-title"><h5 class="fw-bolder"><%= item.name %></h5></div>
-                    <p>¥<%= item.price.to_s(:delimited) %></p>
+                    <div class="card-text"><p class="lead text-center text-light bg-dark">商品説明</p></div>
+                    <div class="card-text"><%= item.introduction %></div>
+                    <p class="text-right lead">¥<%= item.price.to_s(:delimited) %></p>
                   </div>
                 <% end %>
               </div>
@@ -59,5 +61,4 @@
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 </body>
-</html>
 
